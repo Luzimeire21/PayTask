@@ -1,0 +1,131 @@
+[
+    {
+      "id": "1a2b3c",
+      "image": "/servicelist/diarista.jpg",
+      "category": "Diarista",
+      "name": "Limpeza Residencial",
+      "description": "Serviço completo de limpeza para casas e apartamentos.",
+      "link": "/servicos/diarista/limpeza-residencial"
+    },
+    {
+      "id": "2d4e6f",
+      "image": "/servicelist/limpezaPesada.jpg",
+      "category": "Diarista",
+      "name": "Limpeza Pós-Obra",
+      "description": "Limpeza especializada para residências após reformas ou construções.",
+      "link": "/servicos/diarista/limpeza-pos-obra"
+    },
+    {
+      "id": "3g5h7i",
+      "image": "/servicelist/servEletrico.jpg",
+      "category": "Reparos",
+      "name": "Serviços de Eletricista",
+      "description": "Instalações e reparos elétricos em geral.",
+      "link": "/servicos/reparos/eletricista"
+    },
+    {
+      "id": "4j8k0l",
+      "image": "/servicelist/servEncanador.jpg",
+      "category": "Reparos",
+      "name": "Serviços de Encanador",
+      "description": "Reparos e manutenção em encanamentos e sistemas hidráulicos.",
+      "link": "/servicos/reparos/encanador"
+    },
+    {
+      "id": "5m1n2o",
+      "image": "/servicelist/mecAuto.jpg",
+      "category": "Mecânica",
+      "name": "Mecânica de Carros",
+      "description": "Manutenção preventiva e corretiva de automóveis.",
+      "link": "/servicos/mecanica/carros"
+    },
+    {
+      "id": "6p3q4r",
+      "image": "/servicelist/mecMoto.jpg",
+      "category": "Mecânica",
+      "name": "Mecânica de Motos",
+      "description": "Reparos e manutenção para motocicletas.",
+      "link": "/servicos/mecanica/motos"
+    },
+    {
+      "id": "7s5t6u",
+      "image": "/servicelist/casamento.jpg",
+      "category": "Eventos",
+      "name": "Organização de Casamentos",
+      "description": "Planejamento completo para casamentos.",
+      "link": "/servicos/eventos/casamentos"
+    },
+    {
+      "id": "8v7w8x",
+      "image": "/servicelist/eventoEmpres.jpg",
+      "category": "Eventos",
+      "name": "Festas Corporativas",
+      "description": "Organização de eventos e confraternizações empresariais.",
+      "link": "/servicos/eventos/corporativos"
+    },
+    {
+      "id": "9y0z1a",
+      "image": "/servicelist/webdesign.jpg",
+      "category": "Tecnologia",
+      "name": "Desenvolvimento de Websites",
+      "description": "Criação de sites personalizados e responsivos.",
+      "link": "/servicos/tecnologia/websites"
+    },
+    {
+      "id": "0b2c3d",
+      "image": "/servicelist/reparosPc.jpg",
+      "category": "Tecnologia",
+      "name": "Suporte Técnico",
+      "description": "Suporte para manutenção de computadores e sistemas.",
+      "link": "/servicos/tecnologia/suporte-tecnico"
+    },
+    {
+      "id": "1e4f5g",
+      "image": "/servicelist/mathClass.jpg",
+      "category": "Aulas",
+      "name": "Aulas de Matemática",
+      "description": "Reforço escolar em matemática para todos os níveis.",
+      "link": "/servicos/aulas/matematica"
+    },
+    {
+      "id": "2h6i7j",
+      "image": "/servicelist/musicClass.jpg",
+      "category": "Aulas",
+      "name": "Aulas de Música",
+      "description": "Aulas de violão, piano e outros instrumentos musicais.",
+      "link": "/servicos/aulas/musica"
+    },
+    {
+      "id": "3k8l9m",
+      "image": "/servicelist/atendimentoMedico.jpg",
+      "category": "Saúde",
+      "name": "Consulta Médica",
+      "description": "Atendimento médico especializado em diversas áreas.",
+      "link": "/servicos/saude/consulta-medica"
+    },
+    {
+      "id": "4n0o1p",
+      "image": "/servicelist/fisio.jpg",
+      "category": "Saúde",
+      "name": "Fisioterapia",
+      "description": "Tratamentos de reabilitação física com fisioterapeutas qualificados.",
+      "link": "/servicos/saude/fisioterapia"
+    },
+    {
+      "id": "5q2r3s",
+      "image": "/servicelist/haircut.jpg",
+      "category": "Beleza",
+      "name": "Corte de Cabelo",
+      "description": "Cortes de cabelo para homens e mulheres.",
+      "link": "/servicos/beleza/corte-de-cabelo"
+    },
+    {
+      "id": "6t4u5v",
+      "image": "/servicelist/manicure.jpg",
+      "category": "Beleza",
+      "name": "Manicure e Pedicure",
+      "description": "Cuidados com as unhas das mãos e dos pés.",
+      "link": "/servicos/beleza/manicure-pedicure"
+    }
+  ]
+  
