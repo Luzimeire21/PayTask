@@ -2,15 +2,9 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
-import { ClerkProvider, UserButton } from "@clerk/nextjs";
+import { ClerkProvider } from "@clerk/nextjs";
 import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "@/components/ThemeProvider";
-import ThememToggle from "@/components/ThemeToggle";
-import Link from "next/link";
-import Navbar from "@/components/home/Navbar";
-import MobileNav from "@/components/home/MobileNav";
-import Footer from "@/components/Footer";
-import { Briefcase } from "lucide-react";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -34,22 +28,8 @@ export default function RootLayout({
           )}
         >
           <ThemeProvider attribute="class" defaultTheme="system">
-            <div className="hidden md:block">
-              <Navbar containerStyles="w-full py-4 px-6" />
-            </div>
-            <div className="flex flex-row gap-5 justify-between items-center md:hidden m-5">
-              <div className="flex items-center text-xl text-primary font-bold start-1 gap-3">
-                <Briefcase className="h-8 w-8" />
-                <Link href="/">PayTask</Link>
-              </div>
-              <div className="flex flex-row justify-center items-center gap-5">
-                <MobileNav />
-                <UserButton />
-                <ThememToggle />
-              </div>
-            </div>
             {children}
-            <Footer />
+
             <Toaster />
           </ThemeProvider>
         </body>
