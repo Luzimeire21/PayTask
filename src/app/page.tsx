@@ -9,6 +9,7 @@ export default function HomePage() {
       <Hero />
       <Services />
       <Work />
+      
       <About />
     </div>
   );
