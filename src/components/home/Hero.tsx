@@ -22,7 +22,7 @@ export default function Hero() {
           />
         </div>
 
-        <div className="bg-orange-200 dark:bg-secondary w-[40em] rounded-lg rounded-bl-[20em] hidden xl:flex justify-end max-h-[31em]">
+        <div className="bg-primary/50 dark:bg-secondary w-[40em] rounded-lg rounded-bl-[20em] hidden xl:flex justify-end max-h-[31em]">
           <Image src="/trabalhador4.png" width={450} height={400} alt="" />
         </div>
       </div>
