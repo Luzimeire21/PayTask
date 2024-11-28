@@ -1,5 +1,5 @@
 import { DAYS_OF_WEEK_IN_ORDER } from "@/data/constants";
-import { relations } from "drizzle-orm";
+import { InferSelectModel, relations } from "drizzle-orm";
 import {
   pgTable,
   integer,
@@ -37,6 +37,8 @@ export const servicesTable = pgTable(
     },
   ]
 );
+
+export type ServiceTable = InferSelectModel<typeof servicesTable>;
 
 export const ScheduleTable = pgTable("schedules", {
   id: uuid("id").primaryKey().defaultRandom(),

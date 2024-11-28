@@ -1,5 +1,8 @@
+import { DataTable } from "@/components/tables/service-table";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { db } from "@/drizzle/db";
 import { auth } from "@clerk/nextjs/server";
+import { columns } from "./columns";
 
 export default async function sellerPage() {
   const { userId, redirectToSignIn } = await auth();
@@ -11,7 +14,14 @@ export default async function sellerPage() {
     orderBy: ({ createdAt }, { desc }) => desc(createdAt),
   });
 
-  console.log(services);
-
-  return <div>seller</div>;
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle className="text-primary">Todos os serviços</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <DataTable columns={columns} data={services} />
+      </CardContent>
+    </Card>
+  );
 }

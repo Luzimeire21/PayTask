@@ -38,12 +38,13 @@ import {
   SelectContent,
   SelectItem,
 } from "@/components/ui/select";
-import { createServico } from "@/server/actions/servicos";
+import { createServico, deleteServiceById } from "@/server/actions/servicos";
+import { formatPriceToCents } from "@/lib/formatters";
 
 export function ServicoForm({
-  event,
+  service,
 }: {
-  event?: {
+  service?: {
     id: string;
     name: string;
     description?: string;
@@ -54,7 +55,7 @@ export function ServicoForm({
   const [isDeletePending, startDeleteTransition] = useTransition();
   const form = useForm<z.infer<typeof servicoFormSchema>>({
     resolver: zodResolver(servicoFormSchema),
-    defaultValues: event ?? {
+    defaultValues: service ?? {
       isActive: true,
       durationInMinutes: 30,
       price: 0,
@@ -62,7 +63,13 @@ export function ServicoForm({
   });
 
   async function onSubmit(values: z.infer<typeof servicoFormSchema>) {
-    const data = await createServico(values);
+    // Converte o preço para centavos
+    const formattedValues = {
+      ...values,
+      price: formatPriceToCents(values.price),
+    };
+
+    const data = await createServico(formattedValues);
 
     if (data?.error) {
       form.setError("root", {
@@ -191,11 +198,10 @@ export function ServicoForm({
           )}
         />
         <div className="flex gap-2 justify-end">
-          {event && (
+          {service && (
             <AlertDialog>
               <AlertDialogTrigger asChild>
                 <Button
-                  variant="destructiveGhost"
                   disabled={isDeletePending || form.formState.isSubmitting}
                 >
                   Delete
@@ -206,21 +212,20 @@ export function ServicoForm({
                   <AlertDialogTitle>Are you sure?</AlertDialogTitle>
                   <AlertDialogDescription>
                     This action cannot be undone. This will permanently delete
-                    your this event.
+                    your this service.
                   </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
                   <AlertDialogCancel>Cancel</AlertDialogCancel>
                   <AlertDialogAction
                     disabled={isDeletePending || form.formState.isSubmitting}
-                    variant="destructive"
                     onClick={() => {
                       startDeleteTransition(async () => {
-                        const data = await deleteEvent(event.id);
+                        const data = await deleteServiceById(service.id);
 
                         if (data?.error) {
                           form.setError("root", {
-                            message: "There was an error deleting your event",
+                            message: "There was an error deleting your service",
                           });
                         }
                       });
@@ -239,7 +244,7 @@ export function ServicoForm({
             asChild
             variant="outline"
           >
-            <Link href="/events">Cancel</Link>
+            <Link href="/seller">Cancel</Link>
           </Button>
           <Button
             disabled={isDeletePending || form.formState.isSubmitting}
