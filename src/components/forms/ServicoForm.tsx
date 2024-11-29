@@ -38,8 +38,13 @@ import {
   SelectContent,
   SelectItem,
 } from "@/components/ui/select";
-import { createServico, deleteServiceById } from "@/server/actions/servicos";
+import {
+  createServico,
+  deleteServiceById,
+  updateServico,
+} from "@/server/actions/servicos";
 import { formatPriceToCents } from "@/lib/formatters";
+import { redirect } from "next/navigation";
 
 export function ServicoForm({
   service,
@@ -48,6 +53,8 @@ export function ServicoForm({
     id: string;
     name: string;
     description?: string;
+    price: number;
+    category: string;
     durationInMinutes: number;
     isActive: boolean;
   };
@@ -63,13 +70,15 @@ export function ServicoForm({
   });
 
   async function onSubmit(values: z.infer<typeof servicoFormSchema>) {
-    // Converte o preço para centavos
     const formattedValues = {
       ...values,
       price: formatPriceToCents(values.price),
     };
 
-    const data = await createServico(formattedValues);
+    const action =
+      service == null ? createServico : updateServico.bind(null, service.id);
+
+    const data = await action(formattedValues);
 
     if (data?.error) {
       form.setError("root", {
@@ -202,36 +211,40 @@ export function ServicoForm({
             <AlertDialog>
               <AlertDialogTrigger asChild>
                 <Button
+                  variant="destructiveGhost"
                   disabled={isDeletePending || form.formState.isSubmitting}
                 >
-                  Delete
+                  Excluir
                 </Button>
               </AlertDialogTrigger>
               <AlertDialogContent>
                 <AlertDialogHeader>
-                  <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+                  <AlertDialogTitle>Você tem certeza?</AlertDialogTitle>
                   <AlertDialogDescription>
-                    This action cannot be undone. This will permanently delete
-                    your this service.
+                    Essa ação não pode ser desfeita. Isso irá deletar
+                    permanentemente esse serviço.
                   </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
-                  <AlertDialogCancel>Cancel</AlertDialogCancel>
+                  <AlertDialogCancel>Cancelar</AlertDialogCancel>
                   <AlertDialogAction
                     disabled={isDeletePending || form.formState.isSubmitting}
+                    variant="destructive"
                     onClick={() => {
                       startDeleteTransition(async () => {
                         const data = await deleteServiceById(service.id);
 
                         if (data?.error) {
                           form.setError("root", {
-                            message: "There was an error deleting your service",
+                            message: "Ocorreu algum erro deletando o serviço",
                           });
                         }
                       });
+
+                      redirect("/seller");
                     }}
                   >
-                    Delete
+                    Excluir
                   </AlertDialogAction>
                 </AlertDialogFooter>
               </AlertDialogContent>

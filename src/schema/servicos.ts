@@ -10,7 +10,7 @@ export const servicoFormSchema = z.object({
   price: z.coerce
     .number()
     .positive("O valor precisa ser positivo")
-    .max(50000, "Serviço precisa ter o preço menor que 50K"),
+    .max(500000, "Serviço precisa ter o preço menor"),
   category: z
     .string({
       required_error: "O Serviço precisa ter uma categoria",

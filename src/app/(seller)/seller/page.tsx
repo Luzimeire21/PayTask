@@ -4,6 +4,8 @@ import { db } from "@/drizzle/db";
 import { auth } from "@clerk/nextjs/server";
 import { columns } from "./columns";
 
+export const revalidate = 0
+
 export default async function sellerPage() {
   const { userId, redirectToSignIn } = await auth();
 
